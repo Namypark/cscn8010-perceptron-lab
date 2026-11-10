@@ -16,12 +16,18 @@ In this project we take the Single-Layer Perceptrons workshop and push each of i
 |---|---|---|
 | Activations, Logic Gates and the Movie Challenge | Rangeetha | _To be completed_ |
 | Decision Boundaries, XOR and the Playground | Davisen | _To be completed_ |
-| Wonderland Sensitivity and the Prostate Cancer ANN | Carlos | _To be completed_ |
+| Wonderland Sensitivity and the Prostate Cancer ANN | Carlos | Flipping one Wonderland input at a time, raw score z vs prediction σ(z), and a hand-checked gradient step on the 1-2-2 Prostate Cancer network |
 | Gradient Descent, Backpropagation and Training | Nnamdi | _To be completed_ |
 
 ### Key results
 
 _To be completed. Each author adds 2–3 bullet points with the most interesting numbers or plots from their section._
+
+**Carlos: Wonderland Sensitivity and the Prostate Cancer ANN**
+
+- Starting from x = [1, 0, 1] (z = 6), flipping any single input never changes the decision: z only moves by that input's weight (−5, +2, −4). Across all 8 inputs the neuron says "no" only for [0,0,0] and [0,1,0].
+- Raw score vs prediction: for target 1, the error on z = 6 is −5 (loss 12.5), but the error on σ(6) ≈ 0.9975 is 0.0025 (loss ≈ 3×10⁻⁶). The error must be computed on σ(z).
+- The Prostate Cancer network (1 PSA input, 2 hidden neurons, 2 outputs) classifies all 15 patients correctly. Its hidden neurons cut the PSA axis at ≈ 1.32 and ≈ 2.44, and Healthy is the band in between. The weights are so large that it is saturated: the loss is below 10⁻¹⁸ for every real patient, so a gradient step changes nothing. On an illustrative borderline patient (PSA 1.3) one step with η = 0.1 takes the loss from 0.54 to nearly 0.
 
 ### Corrections to the original material
 
