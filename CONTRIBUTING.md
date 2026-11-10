@@ -5,7 +5,7 @@
 ```bash
 git clone <our-repo-url>
 cd <repo>
-python3.12 -m venv .venv          # TensorFlow does not support Python 3.14 yet; use 3.10–3.12
+python3.12 -m venv .venv          # must be Python 3.12 (see README)
 source .venv/bin/activate         # Windows: .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 ```
