@@ -25,7 +25,7 @@ MARK = "team_extensions"
 
 
 def md_cell(text, tag):
-    return {"cell_type": "markdown", "metadata": {MARK: tag}, "source": text}
+    return {"cell_type": "markdown", "id": f"team-{tag}", "metadata": {MARK: tag}, "source": text}
 
 
 def load(path):

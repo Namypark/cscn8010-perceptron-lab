@@ -23,7 +23,15 @@
 # Note: This is a minimal example for educational purposes. In practice, you would typically 
 # use a DataLoader and batch training for larger datasets.   
 
+import argparse
+
 import torch
+
+# usage: python scripts/train_or_perceptron.py --lr 0.1 --epochs 200
+parser = argparse.ArgumentParser()
+parser.add_argument("--lr", type=float, default=0.1)
+parser.add_argument("--epochs", type=int, default=20)
+args = parser.parse_args()
 
 # -------------------------
 # 1. Create toy training data
@@ -46,8 +54,8 @@ torch.manual_seed(0)
 weights = torch.randn(2, requires_grad=True)
 bias = torch.randn(1, requires_grad=True)
 
-lr = 0.1
-epochs = 20
+lr = args.lr
+epochs = args.epochs
 
 # -------------------------
 # 3. Training loop
@@ -87,3 +95,9 @@ for epoch in range(epochs):
 # -------------------------
 print("\nTrained weights:", weights)
 print("Trained bias:", bias)
+
+# check what the trained neuron actually predicts
+with torch.no_grad():
+    preds = torch.sigmoid(X @ weights + bias)
+for x_i, y_i, p in zip(X, y, preds):
+    print(f"x = {x_i.int().tolist()}  target = {int(y_i.item())}  sigmoid = {p.item():.3f}  predicted = {int(p.item() >= 0.5)}")

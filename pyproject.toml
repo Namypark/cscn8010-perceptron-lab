@@ -1,12 +1,13 @@
 [project]
 name = "cscn8010-perceptron-lab"
 version = "0.1.0"
-requires-python = ">=3.14"
+# keep in sync with requirements.txt (numpy 2.5 needs 3.12+, tensorflow 2.21 has no 3.13+ wheels)
+requires-python = ">=3.12,<3.13"
 dependencies = [
-    "ipykernel>=7.4.0",
-    "matplotlib>=3.11.2",
-    "notebook>=7.6.5",
-    "numpy>=2.5.4",
-    "tensorflow>=2.22.0rc0",
-    "torch>=2.15.0",
+    "numpy==2.5.4",
+    "matplotlib==3.11.2",
+    "torch==2.15.0",
+    "tensorflow==2.21.0",
+    "notebook==7.6.5",
+    "ipykernel==7.4.0",
 ]
